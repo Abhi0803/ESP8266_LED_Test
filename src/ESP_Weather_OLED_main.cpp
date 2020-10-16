@@ -27,8 +27,8 @@ Global Variables & Object Declarations and Defines for the Functions
 #define OLED_RESET            -1    // Reset pin # (or -1 if sharing Arduino reset pin)
 
 // Define the City You want Data of
-#define CITY     "Bhopal";
-
+#define CITY          "ENTER YOUR CITY HERE";
+#define API_KEY       "ENTER YOUR API KEY HERE + '#';        // (If the Does Not have the "#" int rnd add it)
 // Weather API Data Variables
 float main_temp, humidity, pressure, wind_speed;
 int main_pressure, main_humidity, visibility, timezone;
@@ -109,8 +109,9 @@ void API_Init(void)
   // API Link
   String LinkInit = "http://api.openweathermap.org/data/2.5/weather?q=";
   String CityName = CITY;
-  String EndLink  = "&units=metric&appid=056ceaec162d84d33b4cb29dee7ef1d5#";
-  String Link     = LinkInit + CityName + EndLink;
+  String EndLink  = "&units=metric&appid=";
+  String API_Key  = API_KEY;
+  String Link     = LinkInit + CityName + EndLink + API_Key;
 
   // Check WiFi Status
   if (WiFi.status() == WL_CONNECTED)
