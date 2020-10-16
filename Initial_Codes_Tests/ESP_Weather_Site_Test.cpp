@@ -6,8 +6,8 @@
 float temperature, humidity, pressure, altitude;
 
 /*Put your SSID & Password*/
-const char* ssid = "Abhinav’s iPhone";  // Enter SSID here
-const char* password = "123456798";  //Enter Password here
+const char *ssid = "Enter SSID here"; // Enter SSID here
+const char *password = "Enter Password here";     //Enter Password here
 
 ESP8266WebServer server(80);              
  
@@ -150,21 +150,3 @@ void loop() {
 
 
 
-/*
-
-SSID:	Abhinav’s iPhone
-Protocol:	Wi-Fi 4 (802.11n)
-Security type:	WPA2-Personal
-Network band:	2.4 GHz
-Network channel:	6
-IPv6 address:	2401:4900:51c2:1b9a:94ef:324b:ded2:9c2
-Link-local IPv6 address:	fe80::94ef:324b:ded2:9c2%4
-IPv6 DNS servers:	fe80::418:d364:7819:1715%4
-IPv4 address:	172.20.10.2
-IPv4 DNS servers:	172.20.10.1
-Manufacturer:	Qualcomm Atheros Communications Inc.
-Description:	Qualcomm Atheros QCA9377 Wireless Network Adapter
-Driver version:	12.0.0.722
-Physical address (MAC):	E8-2A-44-61-A9-97
-
- */

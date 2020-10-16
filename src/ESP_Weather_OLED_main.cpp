@@ -26,9 +26,12 @@ Global Variables & Object Declarations and Defines for the Functions
 #define SCREEN_HEIGHT         64 // OLED display height, in pixels
 #define OLED_RESET            -1    // Reset pin # (or -1 if sharing Arduino reset pin)
 
-// Define the City You want Data of
-#define CITY          "ENTER YOUR CITY HERE";
-#define API_KEY       "ENTER YOUR API KEY HERE + '#';        // (If the Does Not have the "#" int rnd add it)
+// Define these MACROS You want Data of
+#define CITY          "ENTER YOUR CITY HERE"
+#define API_KEY       "ENTER YOUR API KEY HERE + #"        // (If the Does Not have the "#" int rnd add it)
+#define SSID          "ENTER YOUR SSID HERE"
+#define PASS          "ENTER YOUR PASSWORD HERE"
+
 // Weather API Data Variables
 float main_temp, humidity, pressure, wind_speed;
 int main_pressure, main_humidity, visibility, timezone;
@@ -39,8 +42,8 @@ const size_t capacity = JSON_ARRAY_SIZE(1) + JSON_OBJECT_SIZE(1) + 2 * JSON_OBJE
 DynamicJsonDocument doc(capacity);
 
 /*Put your SSID & Password*/
-const char *ssid = "Abhinav’s iPhone"; // Enter SSID here
-const char *password = "12345679";     //Enter Password here
+const char *ssid = "Enter SSID here"; // Enter SSID here
+const char *password = "Enter Password here";     //Enter Password here
 
 // Objects
 ESP8266WebServer server(80); //Object of class ESP8266WebServer
@@ -128,6 +131,8 @@ void API_Init(void)
 
       JsonObject weather_0 = doc["weather"][0];
 
+
+      //  @Abhi0803_DataStructure - Consider The Readme Document for Changes In this Part of Code
       const char *weather_0_description = weather_0["description"]; // "clear sky"
       Description = weather_0["description"];
 

@@ -9,8 +9,12 @@
 float temperature, humidity, pressure, altitude;
 
 /*Put your SSID & Password*/
-const char *ssid = "Abhinav’s iPhone"; // Enter SSID here
-const char *password = "123456798";    //Enter Password here
+const char *ssid = "Enter SSID here"; // Enter SSID here
+const char *password = "Enter Password here";     //Enter Password here
+
+// Define the City You want Data of
+#define CITY          "ENTER YOUR CITY HERE";
+#define API_KEY       "ENTER YOUR API KEY HERE + #";        // (If the Does Not have the "#" int rnd add it)
 
 ESP8266WebServer server(80);
 
@@ -27,8 +31,6 @@ void setup()
 
   Serial.println("Connecting to ");
   Serial.println(ssid);
-  //  http.begin("http://api.openweathermap.org/data/2.5/weather?q=rewa&appid=056ceaec162d84d33b4cb29dee7ef1d5"); //Specify request destination
-
   //connect to your local wi-fi network
   WiFi.begin(ssid, password);
 
@@ -49,7 +51,12 @@ void loop()
   if (WiFi.status() == WL_CONNECTED)
   {
     HTTPClient http; //Object of class HTTPClient
-    http.begin("http://api.openweathermap.org/data/2.5/weather?q=rewa&units=metric&appid=056ceaec162d84d33b4cb29dee7ef1d5#");
+    String LinkInit = "http://api.openweathermap.org/data/2.5/weather?q=";
+    String CityName = CITY;
+    String EndLink = "&units=metric&appid=";
+    String API_Key = API_KEY;
+    String Link = LinkInit + CityName + EndLink + API_Key;
+    http.begin(Link);
     int httpCode = http.GET();
     //Check the returning code
     if (httpCode > 0)
@@ -110,22 +117,3 @@ void loop()
   // Delay
   delay(60000);
 }
-
-/*
-
-SSID:	Abhinav’s iPhone
-Protocol:	Wi-Fi 4 (802.11n)
-Security type:	WPA2-Personal
-Network band:	2.4 GHz
-Network channel:	6
-IPv6 address:	2401:4900:51c2:1b9a:94ef:324b:ded2:9c2
-Link-local IPv6 address:	fe80::94ef:324b:ded2:9c2%4
-IPv6 DNS servers:	fe80::418:d364:7819:1715%4
-IPv4 address:	172.20.10.2
-IPv4 DNS servers:	172.20.10.1
-Manufacturer:	Qualcomm Atheros Communications Inc.
-Description:	Qualcomm Atheros QCA9377 Wireless Network Adapter
-Driver version:	12.0.0.722
-Physical address (MAC):	E8-2A-44-61-A9-97
-
- */
